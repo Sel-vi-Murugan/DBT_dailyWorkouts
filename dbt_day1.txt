@@ -1,0 +1,140 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+void swap(int *x,int *y){
+    int temp=*x;
+    *x=*y;
+    *y=temp;
+    cout<<*x<<" "<<*y<<endl<<endl;
+}
+
+int findmax(int *arr,int n){
+    int max=*arr;
+    for(int i=1;i<n;i++) {
+        if(*(arr+i)>max){
+            max=*(arr+i);
+        }
+    }
+    return max;
+}
+
+int findmin(int *arr,int n){
+    int min=*arr;
+    for(int i=1;i<n;i++) {
+        if(*(arr+i)<min){
+            min=*(arr+i);
+        }
+    }
+    return min;
+}
+
+void copyStr(char *ch,char *d,int m){
+    while(*ch!='\0'){
+        *d=*ch;
+         ch++;
+         d++;
+    }
+    *d='\0';
+}
+
+void findSum(int *arr,int n){
+    int sum=*arr;
+    for(int i=1;i<n;i++){
+        sum+=*(arr+i);
+    }
+    double avg=(double)sum/n;
+    cout<<"sum value"<<sum<<endl;
+    cout<<"Avg "<<avg<<endl;
+   
+}
+
+bool search(int *arr,int n,int k){
+    for(int i=0;i<n;i++){
+        if(*(arr+i)==k){
+            return true;
+        }
+    }
+    return false;
+}
+int factori(int n){
+    if(n>1){
+        return n*factori(n-1);
+    }
+    else{
+        return 1;
+    }
+}
+
+int countVow(char *ch){
+    int count=0;
+    int n=sizeof(ch)/sizeof(ch[0]);
+    for(int i=0;i<n;i++){
+        if((*(ch+i)=='a')||(*(ch+i)=='e')||(*(ch+i)=='i')||(*(ch+i)=='o')||(*(ch+i)=='u')){
+            count++;
+        }
+    }
+    return count;
+}
+int main() {
+    // Write C++ code here
+    //Understanding
+    // int a=23;
+    // int *b=&a;
+    // cout<<&a<<endl;
+    // cout<<b<<endl<<endl<<*b<<endl;
+   
+    int arr[]={1,5,8};
+   
+    // cout<<arr<<endl;
+    // cout<<*arr<<endl;
+    // cout<<&arr[0]<<endl;
+   
+    // cout<<&arr[2]<<endl;
+    // cout<<arr[2]<<endl;
+   
+//Swapping
+   
+    int x=10,y=15;
+    cout<<"Swapping"<<endl<<x<<" "<<y<<endl;
+    swap(&x,&y);
+//
+    cout<<"Array elements: ";
+    for(int i=0;i<3;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+//Sum and avg
+    int n=sizeof(arr)/sizeof(arr[0]);
+    findSum(arr,n);
+//Min and Max
+    cout<<"Min: "<<findmin(arr,n)<<endl;
+    cout<<"Max: "<<findmax(arr,n)<<endl<<endl;
+
+//Searching    
+    int k;
+    cin>>k;
+    if(search(arr,n,k)){
+        cout<<"present"<<endl;
+    }
+    else{
+        cout<<"Not present"<<endl;
+    }
+   
+//Reverse a String
+    char ch[]="hello";
+    char d[25];
+    int m=sizeof(ch)/sizeof(ch[0]);
+    copyStr(ch,d,m);
+    cout<<d<<endl;
+   
+//Factorial
+   
+    cout<<"Factorial of 5: "<<factori(5)<<endl;
+   
+//Count vowels
+    string str="ahritun";
+    char s[str.length()-1];
+    strcpy(s,str.c_str());
+    cout<<str<<" -> Count: "<<countVow(s);
+    return 0;
+}
